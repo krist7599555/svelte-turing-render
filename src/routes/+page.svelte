@@ -17,10 +17,6 @@ onMount(() => {
   hljs.highlightAll();
 });
 
-function highlight(node: HTMLElement, lang: string) {
-  node.innerHTML = hljs.highlight(node.innerHTML);
-}
-
 // test
 const block: Block = [
   component({
