@@ -1,6 +1,6 @@
 {
   "name": "@krist7599555/svelte-turing-render",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "allow svelte to run in turing machine like behavior",
   "keywords": [
     "svelte",
