@@ -10,6 +10,7 @@ import source_code_type from '$lib/type?raw';
 
 import source_code_page from './+page.svelte?raw';
 import Message from './message.svelte';
+import Nested from './nested.svelte';
 import Note from './note.svelte';
 import Timeout from './timeout.svelte';
 
@@ -51,8 +52,14 @@ const block: Block = [
     },
     events: {
       async mount() {
-        console.log('1');
+        console.log('note mount');
       },
+    },
+  }),
+  component({
+    component: Nested,
+    props: {
+      o: { a: { b: { c: 9999 } } },
     },
   }),
   component({
