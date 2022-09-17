@@ -5,11 +5,16 @@ import Empty from './component/empty.svelte';
 import Never from './component/never.svelte';
 import type { BlockComponent, BlockFunction } from './type';
 
-type ComponentEventsStrictHandlers<T extends SvelteComponent> = Simplify<{
-  [key in keyof ComponentEvents<T> as string extends key ? never : key]?: (
-    e: ComponentEvents<T>[key]
-  ) => void;
-}>;
+type ComponentEventsStrictHandlers<T extends SvelteComponent> = Simplify<
+  {
+    [key in keyof ComponentEvents<T> as string extends key ? never : key]?: (
+      e: ComponentEvents<T>[key]
+    ) => void;
+  } & {
+    mount?: (instance: T) => void | Promise<void> | (() => any);
+    destroy?: () => void;
+  }
+>;
 
 /** @pure */
 export function component<T extends SvelteComponent>(opt: {

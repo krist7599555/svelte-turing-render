@@ -33,12 +33,26 @@ const block: Block = [
       xxx() {
         // method no exists
       },
+      mount(ins) {
+        console.log('MOUNT', ins);
+        return async () => {
+          console.log('DESTRYO CALLBACK');
+        };
+      },
+      destroy() {
+        console.log('DESTROY');
+      },
     },
   }),
   component({
     component: Note,
     props: {
       text: 'note',
+    },
+    events: {
+      async mount() {
+        console.log('1');
+      },
     },
   }),
   component({

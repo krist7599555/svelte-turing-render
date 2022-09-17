@@ -1,5 +1,6 @@
 import { type Readable, writable } from 'svelte/store';
-import type { Simplify } from 'type-fest';
+
+import { browser } from '$app/environment';
 
 import { NEVER_BLOCK } from './block';
 import type { Block, BlockComponent } from './type';
@@ -10,10 +11,13 @@ const gen_id = (() => {
   return () => `component-${++i}` as const;
 })();
 
-export type BlockComponentWithKey = Simplify<BlockComponent & { key: ReturnType<typeof gen_id> }>;
+export type TuringCurrentComponent = {
+  key: ReturnType<typeof gen_id>;
+  component: BlockComponent['component'];
+};
 
-export function turing_render_loop(block: Block): Readable<BlockComponentWithKey> {
-  const store = writable<BlockComponentWithKey>({ ...NEVER_BLOCK, key: gen_id() });
+export function turing_render_loop(block: Block): Readable<TuringCurrentComponent> {
+  const store = writable<TuringCurrentComponent>({ ...NEVER_BLOCK, key: gen_id() });
   async function run(o: Block): Promise<void> {
     if (!o) return;
     // @ts-ignore
@@ -26,19 +30,27 @@ export function turing_render_loop(block: Block): Readable<BlockComponentWithKey
     } else if (is_block_function(o)) {
       await o.function();
     } else if (is_block_component(o)) {
+      const { props, events, component: BaseComponent } = o;
+      console.log({ BaseComponent });
       await new Promise<void>(resolve => {
         store.set({
-          ...o,
-          events: {
-            ...o.events,
-            complete() {
-              if (is_function(o?.events?.complete)) {
-                o.events.complete();
-              }
-              resolve();
-            },
-          },
           key: gen_id(),
+          component: class extends BaseComponent {
+            constructor(...args: any[]) {
+              super(...args);
+              this.$set(props);
+              this.$on('complete', () => resolve());
+              for (const [event_name, handle] of Object.entries(events)) {
+                this.$on(event_name, handle);
+              }
+              if (is_function(events?.mount)) {
+                this.$$.on_mount.push(() => events.mount(this));
+              }
+              if (is_function(events?.destroy)) {
+                this.$$.on_destroy.push(() => events.destroy());
+              }
+            }
+          },
         });
       });
     } else {
@@ -46,7 +58,9 @@ export function turing_render_loop(block: Block): Readable<BlockComponentWithKey
       throw new Error(`block type not match any guard for ${o}`);
     }
   }
-  run(block);
+  if (browser) {
+    run(block);
+  }
   return {
     subscribe: store.subscribe,
   };
