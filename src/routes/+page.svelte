@@ -85,12 +85,13 @@ const block: Block = [
 
 <main>
   <h1>@krist7599555/svelte-turing-render DEMO</h1>
-  <a href="https://github.com/krist7599555/svelte-turing-render">
-    github https://github.com/krist7599555/svelte-turing-render
-  </a>
+  <a href="https://github.com/krist7599555/svelte-turing-render"> github repo </a>
   <div id="touring">
     <Touring block={block} />
   </div>
+  <a href="https://github.dev/krist7599555/svelte-turing-render/blob/main/src/routes/+page.svelte">
+    open in ide online to easy navigate
+  </a>
   <pre><code class="language-html">{source_code_page}</code></pre>
   <pre><code class="language-typescript">{source_code_type}</code></pre>
 </main>
@@ -109,8 +110,9 @@ h1 {
 }
 a {
   color: #f55432;
-  margin-bottom: 1rem;
   display: block;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
 }
 #touring {
   background: #363636;
@@ -121,7 +123,6 @@ a {
 pre {
   border-radius: 1rem;
   color: #ffffff;
-  margin-top: 2rem;
   font-size: 0.7rem;
   width: 100%;
   overflow: scroll;
