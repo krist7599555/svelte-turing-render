@@ -7,14 +7,14 @@
     <title>@krist7599555/svelte-turing-render</title>
     <meta http-equiv="content-security-policy" content=""><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/atom-one-dark.min.css" data-svelte="svelte-bh02xj"><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js" data-svelte="svelte-bh02xj"></script>
 	<link href="/svelte-turing-render/_app/immutable/assets/_page-3cdb0d35.css" rel="stylesheet">
-	<link rel="modulepreload" href="/svelte-turing-render/_app/immutable/start-11cbf9a1.js">
+	<link rel="modulepreload" href="/svelte-turing-render/_app/immutable/start-58c298a2.js">
 	<link rel="modulepreload" href="/svelte-turing-render/_app/immutable/chunks/index-4c199cc8.js">
-	<link rel="modulepreload" href="/svelte-turing-render/_app/immutable/chunks/singletons-97814dfd.js">
+	<link rel="modulepreload" href="/svelte-turing-render/_app/immutable/chunks/singletons-fc05a9d6.js">
 	<link rel="modulepreload" href="/svelte-turing-render/_app/immutable/chunks/index-2a8b7f5a.js">
 	<link rel="modulepreload" href="/svelte-turing-render/_app/immutable/components/layout.svelte-d0208b01.js">
 	<link rel="modulepreload" href="/svelte-turing-render/_app/immutable/modules/pages/_layout.ts-849208c1.js">
 	<link rel="modulepreload" href="/svelte-turing-render/_app/immutable/chunks/_layout-81c0d46d.js">
-	<link rel="modulepreload" href="/svelte-turing-render/_app/immutable/components/pages/_page.svelte-66ead88e.js">
+	<link rel="modulepreload" href="/svelte-turing-render/_app/immutable/components/pages/_page.svelte-511289f7.js">
   </head>
   <body>
     <div>
@@ -43,6 +43,7 @@ import source_code_type from '$lib/type?raw';
 
 import source_code_page from './+page.svelte?raw';
 import Message from './message.svelte';
+import Nested from './nested.svelte';
 import Note from './note.svelte';
 import Timeout from './timeout.svelte';
 
@@ -84,8 +85,14 @@ const block: Block = [
     },
     events: {
       async mount() {
-        console.log('1');
+        console.log('note mount');
       },
+    },
+  }),
+  component({
+    component: Nested,
+    props: {
+      o: { a: { b: { c: 9999 } } },
     },
   }),
   component({
@@ -183,8 +190,8 @@ export type BlockCompleteEvent = { complete: void };
 </main>
 
 
-		<script type="module" data-sveltekit-hydrate="ryro7v">
-		import { start } from "/svelte-turing-render/_app/immutable/start-11cbf9a1.js";
+		<script type="module" data-sveltekit-hydrate="7pwahg">
+		import { start } from "/svelte-turing-render/_app/immutable/start-58c298a2.js";
 
 		start({
 			env: {},
@@ -198,7 +205,7 @@ export type BlockCompleteEvent = { complete: void };
 				form: null
 			},
 			paths: {"base":"/svelte-turing-render","assets":"/svelte-turing-render"},
-			target: document.querySelector('[data-sveltekit-hydrate="ryro7v"]').parentNode,
+			target: document.querySelector('[data-sveltekit-hydrate="7pwahg"]').parentNode,
 			trailing_slash: "never"
 		});
 	</script>
