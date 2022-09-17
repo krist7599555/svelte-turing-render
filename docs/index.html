@@ -7,14 +7,14 @@
     <title>@krist7599555/svelte-turing-render</title>
     <meta http-equiv="content-security-policy" content=""><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/atom-one-dark.min.css" data-svelte="svelte-bh02xj"><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js" data-svelte="svelte-bh02xj"></script>
 	<link href="/svelte-turing-render/_app/immutable/assets/_page-3cdb0d35.css" rel="stylesheet">
-	<link rel="modulepreload" href="/svelte-turing-render/_app/immutable/start-ab3fa3e7.js">
-	<link rel="modulepreload" href="/svelte-turing-render/_app/immutable/chunks/index-9e5c50dd.js">
-	<link rel="modulepreload" href="/svelte-turing-render/_app/immutable/chunks/singletons-658a00e6.js">
-	<link rel="modulepreload" href="/svelte-turing-render/_app/immutable/chunks/index-c89fc770.js">
-	<link rel="modulepreload" href="/svelte-turing-render/_app/immutable/components/layout.svelte-70c9d402.js">
+	<link rel="modulepreload" href="/svelte-turing-render/_app/immutable/start-11cbf9a1.js">
+	<link rel="modulepreload" href="/svelte-turing-render/_app/immutable/chunks/index-4c199cc8.js">
+	<link rel="modulepreload" href="/svelte-turing-render/_app/immutable/chunks/singletons-97814dfd.js">
+	<link rel="modulepreload" href="/svelte-turing-render/_app/immutable/chunks/index-2a8b7f5a.js">
+	<link rel="modulepreload" href="/svelte-turing-render/_app/immutable/components/layout.svelte-d0208b01.js">
 	<link rel="modulepreload" href="/svelte-turing-render/_app/immutable/modules/pages/_layout.ts-849208c1.js">
 	<link rel="modulepreload" href="/svelte-turing-render/_app/immutable/chunks/_layout-81c0d46d.js">
-	<link rel="modulepreload" href="/svelte-turing-render/_app/immutable/components/pages/_page.svelte-6b3d08a1.js">
+	<link rel="modulepreload" href="/svelte-turing-render/_app/immutable/components/pages/_page.svelte-66ead88e.js">
   </head>
   <body>
     <div>
@@ -30,11 +30,7 @@
 
 
 
-
-Message click any where to continue<br>
-<!-- HTML_TAG_START -->default<!-- HTML_TAG_END -->
-
-<div></div></div>
+</div>
   <pre class="svelte-1tgf4c7"><code class="language-html svelte-1tgf4c7">&lt;script lang="ts" context="module">
 declare var hljs: any;
 &lt;/script>
@@ -54,10 +50,6 @@ onMount(() => {
   hljs.highlightAll();
 });
 
-function highlight(node: HTMLElement, lang: string) {
-  node.innerHTML = hljs.highlight(node.innerHTML);
-}
-
 // test
 const block: Block = [
   component({
@@ -74,12 +66,26 @@ const block: Block = [
       xxx() {
         // method no exists
       },
+      mount(ins) {
+        console.log('MOUNT', ins);
+        return async () => {
+          console.log('DESTRYO CALLBACK');
+        };
+      },
+      destroy() {
+        console.log('DESTROY');
+      },
     },
   }),
   component({
     component: Note,
     props: {
       text: 'note',
+    },
+    events: {
+      async mount() {
+        console.log('1');
+      },
     },
   }),
   component({
@@ -152,13 +158,15 @@ pre code {
 &lt;/style>
 </code></pre>
   <pre class="svelte-1tgf4c7"><code class="language-typescript svelte-1tgf4c7">/* eslint-disable @typescript-eslint/no-explicit-any */
+import type { SvelteComponent } from 'svelte';
+import type { Class } from 'type-fest';
 
 export type BlockFunction = { type: 'function'; function: any };
 export type BlockComponent = {
   type: 'component';
-  component: any;
+  component: Class&lt;SvelteComponent>;
   props: Record&lt;string, any>;
-  events: Record&lt;string, (args: any) => void>;
+  events: Record&lt;string, (...args: any[]) => void>;
 };
 export type Block =
   | BlockComponent
@@ -175,8 +183,8 @@ export type BlockCompleteEvent = { complete: void };
 </main>
 
 
-		<script type="module" data-sveltekit-hydrate="r7fjka">
-		import { start } from "/svelte-turing-render/_app/immutable/start-ab3fa3e7.js";
+		<script type="module" data-sveltekit-hydrate="ryro7v">
+		import { start } from "/svelte-turing-render/_app/immutable/start-11cbf9a1.js";
 
 		start({
 			env: {},
@@ -190,7 +198,7 @@ export type BlockCompleteEvent = { complete: void };
 				form: null
 			},
 			paths: {"base":"/svelte-turing-render","assets":"/svelte-turing-render"},
-			target: document.querySelector('[data-sveltekit-hydrate="r7fjka"]').parentNode,
+			target: document.querySelector('[data-sveltekit-hydrate="ryro7v"]').parentNode,
 			trailing_slash: "never"
 		});
 	</script>
