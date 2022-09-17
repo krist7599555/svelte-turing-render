@@ -1,8 +1,12 @@
 # @krist7599555/svelte-turing-render
 
+[![NPM Version](https://img.shields.io/npm/v/@krist7599555/svelte-turing-render.svg)](https://www.npmjs.com/package/@krist7599555/svelte-turing-render)
+[![NPM Downloads](https://img.shields.io/npm/dt/@krist7599555/svelte-turing-render.svg)](https://www.npmjs.com/package/@krist7599555/svelte-turing-render)
+[![Github Repo Size](https://img.shields.io/github/repo-size/krist7599555/svelte-turing-render.svg)](https://github.com/krist7599555/svelte-turing-render)
+
 Touring Machine Like Svelte Component for programmatic component
 
-## [DEMO]()
+## [DEMO https://krist7599555.github.io/svelte-turing-render](https://krist7599555.github.io/svelte-turing-render)
 
 ```svelte
 <!-- TEST: src/routes/+page.svelte -->
