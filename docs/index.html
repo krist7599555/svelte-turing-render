@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="/svelte-turing-render/favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@krist7599555/svelte-turing-render</title>
+    <meta http-equiv="content-security-policy" content=""><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/atom-one-dark.min.css" data-svelte="svelte-bh02xj"><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js" data-svelte="svelte-bh02xj"></script>
+	<link href="/svelte-turing-render/_app/immutable/assets/_page-3cdb0d35.css" rel="stylesheet">
+	<link rel="modulepreload" href="/svelte-turing-render/_app/immutable/start-e155924b.js">
+	<link rel="modulepreload" href="/svelte-turing-render/_app/immutable/chunks/index-9e5c50dd.js">
+	<link rel="modulepreload" href="/svelte-turing-render/_app/immutable/chunks/singletons-26fb2bfc.js">
+	<link rel="modulepreload" href="/svelte-turing-render/_app/immutable/chunks/index-c89fc770.js">
+	<link rel="modulepreload" href="/svelte-turing-render/_app/immutable/components/layout.svelte-70c9d402.js">
+	<link rel="modulepreload" href="/svelte-turing-render/_app/immutable/modules/pages/_layout.ts-849208c1.js">
+	<link rel="modulepreload" href="/svelte-turing-render/_app/immutable/chunks/_layout-81c0d46d.js">
+	<link rel="modulepreload" href="/svelte-turing-render/_app/immutable/components/pages/_page.svelte-6b3d08a1.js">
+  </head>
+  <body>
+    <div>
+
+
+
+
+<main class="svelte-1tgf4c7"><h1 class="svelte-1tgf4c7">@krist7599555/svelte-turing-render DEMO</h1>
+  <a href="https://github.com/krist7599555/svelte-turing-render" class="svelte-1tgf4c7">github https://github.com/krist7599555/svelte-turing-render
+  </a>
+  <div id="touring" class="svelte-1tgf4c7">
+
+
+
+
+
+Message click any where to continue<br>
+<!-- HTML_TAG_START -->default<!-- HTML_TAG_END -->
+
+<div></div></div>
+  <pre class="svelte-1tgf4c7"><code class="language-html svelte-1tgf4c7">&lt;script lang="ts" context="module">
+declare var hljs: any;
+&lt;/script>
+
+&lt;script lang="ts">
+import { onMount } from 'svelte';
+
+import { type Block, component, Touring } from '$lib';
+import source_code_type from '$lib/type?raw';
+
+import source_code_page from './+page.svelte?raw';
+import Message from './message.svelte';
+import Note from './note.svelte';
+import Timeout from './timeout.svelte';
+
+onMount(() => {
+  hljs.highlightAll();
+});
+
+function highlight(node: HTMLElement, lang: string) {
+  node.innerHTML = hljs.highlight(node.innerHTML);
+}
+
+// test
+const block: Block = [
+  component({
+    component: Message,
+    props: {},
+    events: {
+      message_custom_event(e) {
+        console.log(e.detail.fib);
+        // @ts-expect-error
+        console.log(e.detail.man === undefined);
+      },
+      dblclick() {},
+      // @ts-expect-error
+      xxx() {
+        // method no exists
+      },
+    },
+  }),
+  component({
+    component: Note,
+    props: {
+      text: 'note',
+    },
+  }),
+  component({
+    component: Timeout,
+    props: {
+      text: 'timeout',
+      duration: 3000,
+    },
+  }),
+  () => block,
+];
+&lt;/script>
+
+&lt;svelte:head>
+  &lt;!-- https://github.com/highlightjs/highlight.js -->
+  &lt;link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/atom-one-dark.min.css"
+  />
+  &lt;script
+    src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js">&lt;/script>
+&lt;/svelte:head>
+
+&lt;main>
+  &lt;h1>@krist7599555/svelte-turing-render DEMO&lt;/h1>
+  &lt;a href="https://github.com/krist7599555/svelte-turing-render">
+    github https://github.com/krist7599555/svelte-turing-render
+  &lt;/a>
+  &lt;div id="touring">
+    &lt;Touring block={block} />
+  &lt;/div>
+  &lt;pre>&lt;code class="language-html">{source_code_page}&lt;/code>&lt;/pre>
+  &lt;pre>&lt;code class="language-typescript">{source_code_type}&lt;/code>&lt;/pre>
+&lt;/main>
+
+&lt;style>
+main {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  font-family: monospace;
+  width: min(800px, 100% - 2rem);
+  margin: auto;
+  min-height: 90vh;
+}
+h1 {
+  font-size: 1.5rem;
+}
+a {
+  color: #f55432;
+  margin-bottom: 1rem;
+  display: block;
+}
+#touring {
+  background: #363636;
+  border-radius: 1rem;
+  padding: 2rem;
+  color: #ffffff;
+}
+pre {
+  border-radius: 1rem;
+  color: #ffffff;
+  margin-top: 2rem;
+  font-size: 0.7rem;
+  width: 100%;
+  overflow: scroll;
+}
+pre code {
+  padding: 1.5rem;
+}
+&lt;/style>
+</code></pre>
+  <pre class="svelte-1tgf4c7"><code class="language-typescript svelte-1tgf4c7">/* eslint-disable @typescript-eslint/no-explicit-any */
+
+export type BlockFunction = { type: 'function'; function: any };
+export type BlockComponent = {
+  type: 'component';
+  component: any;
+  props: Record&lt;string, any>;
+  events: Record&lt;string, (args: any) => void>;
+};
+export type Block =
+  | BlockComponent
+  | BlockFunction
+  | (() => Block)
+  | Promise&lt;Block>
+  | Block[]
+  | null
+  | undefined
+  | false;
+
+export type BlockCompleteEvent = { complete: void };
+</code></pre>
+</main>
+
+
+		<script type="module" data-sveltekit-hydrate="r7fjka">
+		import { start } from "/svelte-turing-render/_app/immutable/start-e155924b.js";
+
+		start({
+			env: {},
+			hydrate: {
+				status: 200,
+				error: null,
+				node_ids: [0, 2],
+				params: {},
+				routeId: "",
+				data: (function(a){return [a,a]}(null)),
+				form: null
+			},
+			paths: {"base":"/svelte-turing-render","assets":"/svelte-turing-render"},
+			target: document.querySelector('[data-sveltekit-hydrate="r7fjka"]').parentNode,
+			trailing_slash: "never"
+		});
+	</script>
+	</div>
+  </body>
+</html>

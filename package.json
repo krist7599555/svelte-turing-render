@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "build": "pnpm run build:package && pnpm run build:docs",
-    "build:docs": "vite build --emptyOutDir --outDir docs",
+    "build:docs": "vite build && rm -rf docs && mv build docs",
     "build:package": "svelte-kit sync && svelte-package",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
@@ -13,12 +13,10 @@
     "format": "prettier --write .",
     "lint": "prettier --check . && eslint ."
   },
-  "dependencies": {
-    "@sveltejs/adapter-static": "1.0.0-next.43"
-  },
   "devDependencies": {
     "@krist7599555/harmony-editorconfig": "^0.1.4",
     "@sveltejs/adapter-auto": "next",
+    "@sveltejs/adapter-static": "1.0.0-next.43",
     "@sveltejs/kit": "next",
     "@sveltejs/package": "next",
     "@typescript-eslint/eslint-plugin": "^5.37.0",

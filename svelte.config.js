@@ -7,9 +7,11 @@ const config = {
   // for more information about preprocessors
   preprocess: preprocess({}),
   kit: {
-    adapter: adapter({
-      fallback: 'index.html',
-    }),
+    adapter: adapter({}),
+    paths: {
+      base: '/svelte-turing-render',
+      // https://krist7599555.github.io/svelte-turing-render
+    },
   },
 };
 
