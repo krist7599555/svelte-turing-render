@@ -1,3 +1,4 @@
+import type { ComponentConstructorOptions } from 'svelte/internal';
 import { type Readable, writable } from 'svelte/store';
 
 import { browser } from '$app/environment';
@@ -31,14 +32,19 @@ export function turing_render_loop(block: Block): Readable<TuringCurrentComponen
       await o.function();
     } else if (is_block_component(o)) {
       const { props, events, component: BaseComponent } = o;
-      console.log({ BaseComponent });
       await new Promise<void>(resolve => {
         store.set({
           key: gen_id(),
           component: class extends BaseComponent {
-            constructor(...args: any[]) {
-              super(...args);
-              this.$set(props);
+            constructor(args: ComponentConstructorOptions<typeof props>) {
+              super({
+                ...args,
+                intro: true,
+                props: {
+                  ...props,
+                  ...args.props,
+                },
+              } as typeof args);
               this.$on('complete', () => resolve());
               for (const [event_name, handle] of Object.entries(events)) {
                 this.$on(event_name, handle);
