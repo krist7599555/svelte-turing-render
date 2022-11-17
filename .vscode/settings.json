@@ -2,7 +2,9 @@
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSaveMode": "file",
-  "prettier.documentSelectors": ["**/*.svelte"],
+  "prettier.documentSelectors": [
+    "**/*.svelte"
+  ],
   "editor.codeActionsOnSave": {
     "source.fixAll.esbenp.prettier-vscode": true,
     "source.fixAll.eslint": true,

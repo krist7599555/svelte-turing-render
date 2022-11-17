@@ -1,8 +1,6 @@
 import type { ComponentConstructorOptions } from 'svelte/internal';
 import { type Readable, writable } from 'svelte/store';
 
-import { browser } from '$app/environment';
-
 import { NEVER_BLOCK } from './block';
 import type { Block, BlockComponent } from './type';
 import { is_array, is_block_component, is_block_function, is_function, is_promise } from './utils';
@@ -64,9 +62,7 @@ export function turing_render_loop(block: Block): Readable<TuringCurrentComponen
       throw new Error(`block type not match any guard for ${o}`);
     }
   }
-  if (browser) {
-    run(block);
-  }
+  run(block);
   return {
     subscribe: store.subscribe,
   };
