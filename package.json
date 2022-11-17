@@ -10,6 +10,7 @@
   "author": "Krist Ponpairin <krist7599555>",
   "type": "module",
   "scripts": {
+    "build": "svelte-package",
     "build:docs": "vite build",
     "build:package": "svelte-kit sync && npm version patch && svelte-package && cd package && npm publish --access public",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
@@ -24,21 +25,21 @@
     "@sveltejs/adapter-static": "1.0.0-next.47",
     "@sveltejs/kit": "next",
     "@sveltejs/package": "next",
-    "@typescript-eslint/eslint-plugin": "^5.42.0",
-    "@typescript-eslint/parser": "^5.42.0",
-    "eslint": "^8.26.0",
+    "@typescript-eslint/eslint-plugin": "^5.43.0",
+    "@typescript-eslint/parser": "^5.43.0",
+    "eslint": "^8.27.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-svelte3": "^4.0.0",
     "prettier": "^2.7.1",
     "prettier-plugin-svelte": "^2.8.0",
-    "svelte": "^3.52.0",
+    "svelte": "^3.53.1",
     "svelte-check": "^2.9.2",
     "svelte-preprocess": "^4.10.7",
     "svelte2tsx": "^0.5.20",
     "tslib": "^2.4.1",
-    "type-fest": "^3.1.0",
-    "typescript": "^4.8.4",
-    "vite": "^3.2.2"
+    "type-fest": "^3.2.0",
+    "typescript": "^4.9.3",
+    "vite": "^3.2.4"
   },
   "peerDependencies": {
     "type-fest": "*"
