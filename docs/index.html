@@ -1,38 +1,23 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="/svelte-turing-render/favicon.png" />
+    <link rel="icon" href="./favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>@krist7599555/svelte-turing-render</title>
-    <meta http-equiv="content-security-policy" content=""><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/atom-one-dark.min.css" data-svelte="svelte-bh02xj"><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js" data-svelte="svelte-bh02xj"></script>
-	<link href="/svelte-turing-render/_app/immutable/assets/_page-eae7a877.css" rel="stylesheet">
-	<link rel="modulepreload" href="/svelte-turing-render/_app/immutable/start-68e7ece3.js">
-	<link rel="modulepreload" href="/svelte-turing-render/_app/immutable/chunks/index-4c199cc8.js">
-	<link rel="modulepreload" href="/svelte-turing-render/_app/immutable/chunks/singletons-9ffcee6a.js">
-	<link rel="modulepreload" href="/svelte-turing-render/_app/immutable/chunks/index-2a8b7f5a.js">
-	<link rel="modulepreload" href="/svelte-turing-render/_app/immutable/components/layout.svelte-d0208b01.js">
-	<link rel="modulepreload" href="/svelte-turing-render/_app/immutable/modules/pages/_layout.ts-849208c1.js">
-	<link rel="modulepreload" href="/svelte-turing-render/_app/immutable/chunks/_layout-81c0d46d.js">
-	<link rel="modulepreload" href="/svelte-turing-render/_app/immutable/components/pages/_page.svelte-06e35712.js">
+    
+		<link href="./_app/immutable/assets/2.eae7a877.css" rel="stylesheet">
+		<link rel="modulepreload" href="./_app/immutable/entry/start.70e3e01d.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/scheduler.01cfa271.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/singletons.cc7d82b1.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/index.1606cb64.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/app.007990b7.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/index.a8b80cfe.js">
+		<link rel="modulepreload" href="./_app/immutable/nodes/0.e471e734.js">
+		<link rel="modulepreload" href="./_app/immutable/nodes/2.727c589b.js"><!-- HEAD_svelte-bh02xj_START --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/atom-one-dark.min.css"><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js" data-svelte-h="svelte-6ihi49"></script><!-- HEAD_svelte-bh02xj_END -->
   </head>
   <body>
-    <div>
-
-
-
-
-<main class="svelte-ez87o1"><h1 class="svelte-ez87o1">@krist7599555/svelte-turing-render DEMO</h1>
-  <a href="https://github.com/krist7599555/svelte-turing-render" class="svelte-ez87o1">github repo </a>
-  <div id="touring" class="svelte-ez87o1">
-
-
-
-
-</div>
-  <a href="https://github.dev/krist7599555/svelte-turing-render/blob/main/src/routes/+page.svelte" class="svelte-ez87o1">open in ide online to easy navigate
-  </a>
-  <pre class="svelte-ez87o1"><code class="language-html svelte-ez87o1">&lt;script lang="ts" context="module">
+    <div>   <main class="svelte-ez87o1"><h1 class="svelte-ez87o1" data-svelte-h="svelte-1tccreu">@krist7599555/svelte-turing-render DEMO</h1> <a href="https://github.com/krist7599555/svelte-turing-render" class="svelte-ez87o1" data-svelte-h="svelte-6l9zgu">github repo</a> <div id="touring" class="svelte-ez87o1">   </div> <a href="https://github.dev/krist7599555/svelte-turing-render/blob/main/src/routes/+page.svelte" class="svelte-ez87o1" data-svelte-h="svelte-1x1vogx">open in ide online to easy navigate</a> <pre class="svelte-ez87o1"><code class="language-html svelte-ez87o1">&lt;script lang="ts" context="module">
 declare var hljs: any;
 &lt;/script>
 
@@ -165,15 +150,13 @@ pre code {
   padding: 1.5rem;
 }
 &lt;/style>
-</code></pre>
-  <pre class="svelte-ez87o1"><code class="language-typescript svelte-ez87o1">/* eslint-disable @typescript-eslint/no-explicit-any */
-import type { SvelteComponent } from 'svelte';
-import type { Class } from 'type-fest';
+</code></pre> <pre class="svelte-ez87o1"><code class="language-typescript svelte-ez87o1">/* eslint-disable @typescript-eslint/no-explicit-any */
+import type { ComponentType } from 'svelte';
 
 export type BlockFunction = { type: 'function'; function: any };
 export type BlockComponent = {
   type: 'component';
-  component: Class&lt;SvelteComponent>;
+  component: ComponentType;
   props: Record&lt;string, any>;
   events: Record&lt;string, (...args: any[]) => void>;
 };
@@ -188,29 +171,33 @@ export type Block =
   | false;
 
 export type BlockCompleteEvent = { complete: void };
-</code></pre>
-</main>
+</code></pre> </main> 
+			
+			<script>
+				{
+					__sveltekit_8edor5 = {
+						assets: "/svelte-turing-render",
+						base: new URL(".", location).pathname.slice(0, -1),
+						env: {}
+					};
 
+					const element = document.currentScript.parentElement;
 
-		<script type="module" data-sveltekit-hydrate="1o74pdn">
-		import { start } from "/svelte-turing-render/_app/immutable/start-68e7ece3.js";
+					const data = [null,null];
 
-		start({
-			env: {},
-			hydrate: {
-				status: 200,
-				error: null,
-				node_ids: [0, 2],
-				params: {},
-				routeId: "",
-				data: (function(a){return [a,a]}(null)),
-				form: null
-			},
-			paths: {"base":"/svelte-turing-render","assets":"/svelte-turing-render"},
-			target: document.querySelector('[data-sveltekit-hydrate="1o74pdn"]').parentNode,
-			trailing_slash: "never"
-		});
-	</script>
-	</div>
+					Promise.all([
+						import("./_app/immutable/entry/start.70e3e01d.js"),
+						import("./_app/immutable/entry/app.007990b7.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 2],
+							data,
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
   </body>
 </html>
