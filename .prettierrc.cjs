@@ -12,9 +12,9 @@ module.exports = {
     },
   ],
   plugins: [
-    './node_modules/prettier-plugin-packagejson/lib/index.js',
-    './node_modules/prettier-plugin-svelte/plugin.js',
-    './node_modules/prettier-plugin-tailwindcss/dist/index.js',
+    // './node_modules/prettier-plugin-packagejson/lib/index.js',
+    'prettier-plugin-svelte',
+    'prettier-plugin-tailwindcss',
   ],
   printWidth: 100,
   semi: true,
