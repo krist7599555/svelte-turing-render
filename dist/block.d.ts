@@ -4,12 +4,12 @@ import type { BlockComponent, BlockFunction } from './type';
 export declare function component<T extends SvelteComponent>(opt: {
     component: ComponentType<T>;
     props?: T['$$prop_def'];
-    events?: {
-        [key in keyof T['$$events_def']]: (event: T['$$events_def'][key]) => void;
+    events?: ({
+        [key in keyof T['$$events_def']]?: (event: T['$$events_def'][key]) => void;
     } & {
         mount?: (instance: T) => void;
         destroy?: () => void;
-    };
+    });
 }): BlockComponent;
 /** @pure */
 export declare function fun(f: () => unknown): BlockFunction;

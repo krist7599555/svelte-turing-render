@@ -6,6 +6,7 @@ export function component(opt) {
         type: 'component',
         component: opt.component,
         props: opt.props ?? {},
+        // @ts-ignore
         events: opt.events ?? {},
     };
 }

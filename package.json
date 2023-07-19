@@ -1,6 +1,6 @@
 {
   "name": "@krist7599555/svelte-turing-render",
-  "version": "2.2.1",
+  "version": "2.2.4",
   "description": "allow svelte to run in turing machine like behavior",
   "keywords": [
     "svelte",
@@ -9,10 +9,16 @@
   "files": [
     "dist"
   ],
+  "types": "./dist/index.d.ts",
+  "svelte": "./dist/index.js",
+  "import": "./dist/index.js",
+  "main": "./dist/index.js",
   "exports": {
+    "./package.json": "./package.json",
     ".": {
-      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
       "default": "./dist/index.js",
+      "types": "./dist/index.d.ts",
       "svelte": "./dist/index.js"
     }
   },

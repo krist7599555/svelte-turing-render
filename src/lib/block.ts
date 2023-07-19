@@ -8,17 +8,18 @@ import type { BlockComponent, BlockFunction } from './type';
 export function component<T extends SvelteComponent>(opt: {
   component: ComponentType<T>;
   props?: T['$$prop_def'];
-  events?: {
-    [key in keyof T['$$events_def']]: (event: T['$$events_def'][key]) => void;
+  events?: ({
+    [key in keyof T['$$events_def']]?: (event: T['$$events_def'][key]) => void;
   } & {
     mount?: (instance: T) => void;
     destroy?: () => void;
-  };
+  });
 }): BlockComponent {
   return {
     type: 'component',
     component: opt.component,
     props: opt.props ?? {},
+    // @ts-ignore
     events: opt.events ?? {},
   };
 }
