@@ -1,11 +1,12 @@
 {
   "name": "@krist7599555/svelte-turing-render",
-  "version": "1.3.3",
+  "version": "2.0.0",
   "description": "allow svelte to run in turing machine like behavior",
   "keywords": [
     "svelte",
     "sveltekit"
   ],
+  "files": ["dist"],
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",

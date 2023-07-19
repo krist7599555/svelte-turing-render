@@ -1,12 +1,11 @@
-import type { SvelteComponent } from 'svelte';
-import type { Class } from 'type-fest';
+import type { ComponentType } from 'svelte';
 export type BlockFunction = {
     type: 'function';
     function: any;
 };
 export type BlockComponent = {
     type: 'component';
-    component: Class<SvelteComponent>;
+    component: ComponentType;
     props: Record<string, any>;
     events: Record<string, (...args: any[]) => void>;
 };
