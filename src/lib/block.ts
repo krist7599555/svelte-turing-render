@@ -1,32 +1,25 @@
-import type { ComponentEvents, ComponentProps, SvelteComponent } from 'svelte';
-import type { Class, Simplify } from 'type-fest';
+import type { ComponentType, SvelteComponent } from 'svelte';
 
 import Empty from './component/empty.svelte';
 import Never from './component/never.svelte';
 import type { BlockComponent, BlockFunction } from './type';
 
-type ComponentEventsStrictHandlers<T extends SvelteComponent> = Simplify<
-  {
-    [key in keyof ComponentEvents<T> as string extends key ? never : key]?: (
-      e: ComponentEvents<T>[key]
-    ) => void;
-  } & {
-    mount?: (instance: T) => void | Promise<void> | (() => any);
-    destroy?: () => void;
-  }
->;
-
 /** @pure */
 export function component<T extends SvelteComponent>(opt: {
-  component: Class<T>;
-  props?: ComponentProps<T>;
-  events?: ComponentEventsStrictHandlers<T>;
+  component: ComponentType<T>;
+  props?: T['$$prop_def'];
+  events?: {
+    [key in keyof T['$$events_def']]: (event: T['$$events_def'][key]) => void;
+  } & {
+    mount?: (instance: T) => void;
+    destroy?: () => void;
+  };
 }): BlockComponent {
   return {
     type: 'component',
     component: opt.component,
     props: opt.props ?? {},
-    events: opt.events ?? ({} as any),
+    events: opt.events ?? {},
   };
 }
 
